@@ -1,0 +1,12 @@
+body {
+  font-family: 'Barlow', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.modal {
+  height: 90% !important;
+}

@@ -1,0 +1,67 @@
+<div id="login-form">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Welcome back!</h1>
+                <p class="col-lg-10 fs-4">Check out the latest updates and connect with pet lovers in your neighborhood today.</p>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form action="/auth/login" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address *</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password *</label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+                    {{#if errorMessage}}
+                        <p class="error text-danger">{{ errorMessage }}</p>
+                    {{/if}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container px-4 py-5" id="icon-grid">
+    <hr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+        <div class="col d-flex align-items-start">
+            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <div>
+                <h3 class="fw-bold mb-0 fs-4">Secure login</h3>
+                <p>Secure login process to protect your personal information.</p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                <use xlink:href="#cpu-fill"></use>
+            </svg>
+            <div>
+                <h3 class="fw-bold mb-0 fs-4">Pet owner profile</h3>
+                <p>Create a profile for your dog and share it with pet walkers in your area to find the perfect match for your pet's needs.</p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                <use xlink:href="#cpu-fill"></use>
+            </svg>
+            <div>
+                <h3 class="fw-bold mb-0 fs-4">Pet walker profile</h3>
+                <p>Choose the dog that matches your preferences, such as breed, size, and energy level.</p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                <use xlink:href="#home"></use>
+            </svg>
+            <div>
+                <h3 class="fw-bold mb-0 fs-4">Rate your experience</h3>
+                <p>Easily keep track of your favorite pets or walkers by adding them to your favorites list and quickly accessing their information on your account page.</p>
+            </div>
+        </div>
+    </div>
+</div>
