@@ -1,5 +1,6 @@
 <h1>Create pet</h1>
 <form action="/add-new-pet" method="POST">
+  <input type="hidden" name="owner" value="{{user._id}}">
   <p><input type="text" name="name" placeholder="Name"></p>
   <button type="submit">Add</button>
 </form>

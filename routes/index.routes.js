@@ -3,6 +3,7 @@ const router = express.Router();
 const isLoggedIn = require('../middleware/isLoggedIn');
 // Require the Pet model in order to interact with the database
 const Pet = require("../models/Pet.model");
+const User = require("../models/User.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -41,17 +42,12 @@ router.get('/all-pets/:petId', (request, response) => {
     });
 });
 
-
-
-router.get('/all-pets/:petId', (req, res, next) => {
+router.post('/all-pets/:petId/delete', (req, res, next) => {
   const { petId } = req.params;
-  Pet.findById(petId)
-  .then(thePets => {
-    thePets.deleteOne();
-  })
-  .then (() => {
-   res.redirect('/all-pets')
-  })
+  console.log(req.params);
+   Pet.findByIdAndDelete(petId)
+     .then(() => res.redirect('/all-pets'))
+     .catch(error => next(error));
 });
 
 module.exports = router;
