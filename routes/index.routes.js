@@ -21,11 +21,11 @@ router.get('/all-pets', isLoggedIn, (request, response) => {
   })
 });
 
-router.get('/add-new-pet', isLoggedIn, (request, response) => {
-  response.render('pets/add-new-pet');
+router.get('/new-pet', isLoggedIn, (request, response) => {
+  response.render('pets/new-pet');
 });
 
-router.post('/add-new-pet', (request, response) => {
+router.post('/new-pet', (request, response) => {
   const petData = request.body;
   console.log(petData);
   console.log('Attempting to create a new pet with POST /add-new-pet');
@@ -38,7 +38,7 @@ router.get('/all-pets/:petId', (request, response) => {
   const { petId } = request.params;
   Pet.findById(petId)
     .then( (data) => {
-      response.render('pets/my-pet-profile', { data });
+      response.render('pets/pet-profile', { data });
     });
 });
 
@@ -49,5 +49,20 @@ router.post('/all-pets/:petId/delete', (req, res, next) => {
      .then(() => res.redirect('/all-pets'))
      .catch(error => next(error));
 });
+
+router.get('/all-pets/:petId/edit', (req, res, next) => {
+  const { petId } = req.params;
+  Pet.findById(petId)
+    .then(petToEdit => {
+   console.log(petToEdit);
+   res.render('pets/edit-pet.hbs', { pet: petToEdit});
+    })
+    .catch(error => next(error));
+  });
+
+
+
+
+
 
 module.exports = router;

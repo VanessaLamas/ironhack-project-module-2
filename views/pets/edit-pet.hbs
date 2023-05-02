@@ -1,13 +1,11 @@
 
 <h1>Editing pet</h1>
-
-<form action="/edit-pet" method="post">
-
-  <input type="hidden" name="id" value="{{ pet.id }}">
-
-  <label> Title:
-    <input type="text" name="title" value="{{ pet.name }}" required />
+<form action="/all-pets/{{data._id}}/edit" method="POST">
+  <input type="hidden" name="id" value="{{data._id}}">
+  <label> Name:
+    <input type="text" name="name" value="{{data.name}}" required />
   </label>
-
-  <button type="submit"> Update </button>
+   <button>Save changes</button>
 </form>
+
+
