@@ -1,30 +1,28 @@
 const express = require("express");
 const router = express.Router();
 
-// ℹ️ Handles password encryption
+// encryption
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
-
-// How many rounds should bcrypt run the salt (default - 10 rounds)
+// encryption: bcrypt run the salt (default - 10 rounds)
 const saltRounds = 10;
 
-// Require the User model in order to interact with the database
+/* require only the model of user because 
+we are validating in this document the 
+session of the user */
 const User = require("../models/User.model");
 
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+// require the middlewares of the session
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-// GET /auth/signup
+// GET /auth/signup and POST /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
-
-// POST /auth/signup
 router.post("/signup", isLoggedOut, (req, res) => {
-  
   const { firstName, lastName, phoneNumber, email, password } = req.body;
-  // Check that username, email, and password are provided
+  // all the fields of my account creation are obligatory
   if (firstName === "" || lastName === "" || phoneNumber === "" || email === "" || password === "") {
     res.status(400).render("auth/signup", {
       errorMessage:
@@ -38,12 +36,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
     return;
   }
-  // Create a new user - start by hashing the password
+  // create a new user having the hashed password into account
   bcrypt
     .genSalt(saltRounds)
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
-      // Create a user and save it in the database
+      // create a user and save it in the database
       return User.create({ firstName, lastName, phoneNumber, email, password: hashedPassword });
     })
     .then((user) => {
@@ -64,45 +62,39 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
 });
 
-// GET /auth/login
+// GET /auth/login and POST /auth/login
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
-
-// POST /auth/login
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
-
-  // Check that username, email, and password are provided
+  // check that email and password are provided
   if (email === "" || password === "") {
     res.status(400).render("auth/login", {
       errorMessage:
         "All fields are mandatory.",
     });
-
     return;
   }
-
-  // Here we use the same logic as above
-  // - either length based parameters or we check the strength of a password
+  // here we use the same logic as in account creation for the password
   if (password.length < 6) {
     return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 6 characters long.",
     });
   }
-
-  // Search the database for a user with the email submitted in the form
+  // search the database for a user with the email submitted in the form
   User.findOne({ email })
     .then((user) => {
-      // If the user isn't found, send an error message that user provided wrong credentials
+      /* if the user isn't found, send an error message that user 
+      provided wrong credentials */
       if (!user) {
         res
           .status(400)
           .render("auth/login", { errorMessage: "Wrong credentials." });
         return;
       }
-
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      /* If user is found based on the email, check if the in putted 
+      password matches the one saved in the database */
       bcrypt
         .compare(password, user.password)
         .then((isSamePassword) => {
@@ -112,15 +104,13 @@ router.post("/login", isLoggedOut, (req, res, next) => {
               .render("auth/login", { errorMessage: "Wrong credentials." });
             return;
           }
-
           // Add the user object to the session object
           req.session.currentUser = user.toObject();
           // Remove the password field
           delete req.session.currentUser.password;
-
           res.redirect("/my-account");
         })
-        .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
+        .catch((err) => next(err));
     })
     .catch((err) => next(err));
 });
@@ -135,5 +125,8 @@ router.get("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
+
+
+
 
 module.exports = router;

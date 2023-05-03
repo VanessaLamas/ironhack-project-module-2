@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const petSchema = new Schema(
   {
     name: String,
+    description: String,
+    image: Buffer,
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',
