@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-// require models of pet and user in the models folder
+// require models of pet and user in the models folder and the fileuploader to upload an image
 const Pet = require("../models/Pet.model");
+const fileUploader = require("../config/cloudinary.config");
 const User = require("../models/User.model");
 
 // render the homepage, my account page, all pets and new pet
@@ -23,13 +24,22 @@ router.get('/new-pet', isLoggedIn, (request, response) => {
   response.render('pets/new-pet');
 });
 
-// create the new pet
-router.post('/new-pet', (request, response) => {
-  const petData = request.body;
-  console.log(petData);
+// create the new pet and upload the image into the database and get the url from cloudinary
+const cloudinary = require('cloudinary').v2;
+router.post('/new-pet', fileUploader.single('imageUrl'), (request, response) => {
+  const { name, description, longDescription } = request.body;
   console.log('Attempting to create a new pet with POST /add-new-pet');
-  Pet.create(petData).then(() => {
-    response.redirect('/all-pets');
+  // upload the image to Cloudinary and retrieve the URL
+  cloudinary.uploader.upload(request.file.path, function (error, result) {
+    if (error) {
+      console.error(error);
+      return response.status(500).send('Error uploading image to Cloudinary');
+    } else {
+      const imageUrl = result.secure_url;
+      Pet.create({ name, description, longDescription, imageUrl }).then(() => {
+        response.redirect('/all-pets');
+      });
+    }
   });
 });
 
@@ -68,10 +78,5 @@ router.post('/all-pets/:petId/edit', (req, res, next) => {
     .then(updatedPet => res.redirect(`/all-pets/${updatedPet._id}`))
     .catch(error => next(error));
 });
-
-// setting the dogs api
-
-
-
 
 module.exports = router;

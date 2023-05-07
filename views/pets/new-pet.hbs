@@ -1,7 +1,15 @@
 <h1>Create pet</h1>
-<form action="/new-pet" method="POST">
+<form action="/new-pet" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="owner" value="{{user._id}}">
-    <p><input type="text" name="name" placeholder="Name"></p>
-    <p><input type="text" name="description" placeholder="Description"></p>
-    <button type="submit">Add</button>
-</form>
+        <p>Name:
+            <input type="text" name="name" placeholder="Name"></p>
+            <p>Small description:
+                <input type="text" name="description" placeholder="Description"></p>
+                <p>More Details:
+                    <input type="text" name="longDescription" placeholder="More details"></p>
+                    <p>Image:
+                        <input type="file" name="imageUrl"></p>
+                        <p>
+                            <button type="submit">Add</button>
+                    </form>
+
