@@ -28,4 +28,14 @@
             </div>
         </div>
     </div>
-</section>
+
+
+
+<pre>{{data}}</pre>
+
+{{!-- posts/details.hbs --}}
+<form action="/all-pets/{{data._id}}/comment" method="post">
+  <input type="text" name="author" value="{{user._id}}" hidden />
+  <textarea name="content" cols="30" rows="2"></textarea>
+  <button type="submit">Comment</button>
+</form>

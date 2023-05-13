@@ -5,14 +5,15 @@ const petSchema = new Schema(
     name: String,
     description: String,
     longDescription: String,
-    imageUrl: String, 
+    imageUrl: String,
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-    }
+    },
+    comments: [{
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    }]
   });
-const User = require("../models/User.model");
 const Pet = mongoose.model('Pet', petSchema);
-const fileUploader = require("../config/cloudinary.config");
 module.exports = Pet;
-
