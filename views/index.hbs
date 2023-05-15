@@ -1,126 +1,61 @@
-<div class="px-4 pt-5 my-5 text-center border-bottom">
+  {{#unless user }}
+<div class="px-4 p-5 text-center bg-success-subtle-main-banner">
     <h1 class="display-4 fw-bold text-body-emphasis">Happy Tails</h1>
     <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Walking made simple for your furry friend. For happy, healthy, and satisfied pets.</p>
+        <h3 class="lead mb-4">Join now and find the perfect pet to accompany you on your daily walks!</h3>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            {{#unless user }}
                 <a href="/auth/login" class="btn btn-primary btn-lg px-4 me-sm-3">Log in</a>
                 <a href="/auth/signup" class="btn btn-outline-secondary btn-lg px-4">Create account</a>
-                {{else}}
-            {{/unless}}
         </div>
     </div>
-    <div class="overflow-hidden" style="max-height: 30vh;">
-        <div class="container px-5">
-            <img src="/images/homepage-hero.jpeg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy"></div>
-        </div>
-    </div>
-     {{#unless user }}
-    <div class="container px-4 py-5" id="icon-grid">
-        <h2 class="pb-2 border-bottom">Join our community</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
-            <div class="col d-flex align-items-start">
-                <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-                <div>
-                    <h3 class="fw-bold mb-0 fs-4">Secure login</h3>
-                    <p>Secure login process to protect your personal information.</p>
-                </div>
-            </div>
-            <div class="col d-flex align-items-start">
-                <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-                <div>
-                    <h3 class="fw-bold mb-0 fs-4">Pet owner profile</h3>
-                    <p>Create a profile for your dog and share it with pet walkers in your area to find the perfect match for your pet's needs.</p>
-                </div>
-            </div>
-            <div class="col d-flex align-items-start">
-                <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#calendar3"></use>
-                </svg>
-                <div>
-                    <h3 class="fw-bold mb-0 fs-4">Pet walker profile</h3>
-                    <p>Choose the dog that matches your preferences, such as breed, size, and energy level.</p>
-                </div>
-            </div>
-            <div class="col d-flex align-items-start">
-                <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#home"></use>
-                </svg>
-                <div>
-                    <h3 class="fw-bold mb-0 fs-4">Availability</h3>
-                    <p>See all pets that are available for a walk with one click.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-     {{else}}
-     <div class="container my-5">
-  <div class="p-5 text-center bg-body-tertiary rounded-3">
-    <h1 class="text-body-emphasis">All pets</h1>
-    <p class="lead">
-      Discover the pets that are currently in the need of a pet lover
-    </p>
-  </div>
-</div>
-            {{/unless}}
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-5 py-5">
-            <div class="col-lg-6 order-sm-1">
-                <img src="/images/homepage-about-happy-tails-lovers.gif" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"></div>
-                <div class="col-12 col-sm-12 col-lg-6 order-sm-2">
-                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Need assistance walking your pet?</h1>
-                    <p class="lead">We connect pet owners with their neighbors who are happy to help 
-                                                                                                                                            with
-                        <strong>pet walking</strong>.</p>
-                    <p class="lead">Easily find trusted and reliable assistance for your 
-                                                                                                                                            furry friend's exercise and care.</p>
-                    <p class="lead">
-                        <strong>Join our community</strong>
-                        of pet enthusiasts and start making connections today!</p>
-                </div>
-            </div>
-        </div>
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-10 col-sm-12 col-lg-6">
-                    <img src="/images/homepage-about-me.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"></div>
-                    <div class="col-lg-6">
-                        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Behind Happy Tails</h1>
-                        <p class="lead">
-                            I am Vanessa Lamas, passionate about using my abilities to help 
-                                                                                                                                the community give their pets a better life.</p>
-                        <p class="lead">
-                            I believe that every pet deserves a loving and caring home, and I am
-                            <strong>committed to helping pet owners find the resources they need 
-                                                                                                                                                                to ensure their pets' health and happiness.</strong>
-                        </p>
-                        <p class="lead">
-                            My goal is to use my expertise learned in Ironhack to develop innovative 
-                                                                                                                                solutions that will make a positive impact on pets and their 
-                                                                                                                                owners in the community.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="container col-xxl-8 px-4 py-5">
-                <div class="row align-items-center g-5 py-5">
-                    <div class="col-lg-6 order-sm-1">
-                        <img src="/images/homepage-about-happy-tails-owners.gif" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"></div>
-                        <div class="col-12 col-sm-12 col-lg-6 order-sm-2">
-                            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Why help pet owners?</h1>
-                            <p class="lead">
-                                Walking dogs can provide many benefits for humans beyond just the pet owner.
-                                <p class="lead">
-                                    For example, it can improve physical fitness, reduce stress, and 
-                                                     increase socialization.</p>
-                                <p class="lead">
-                                    It can also provide a sense of purpose and 
-                                                     help people get outside and enjoy nature. By walking dogs, people 
-                                                     can reap these benefits while also helping to provide exercise and 
-                                                     stimulation for furry friends.</p>
+<div class="overflow-hidden pb-5" style="max-height: 60vh;">
+   <div class="container px-5">
+       <img src="/images/homepage-hero.jpeg" class="img-fluid border" alt="Example image" width="800" height="600" loading="lazy"></div>
+   </div>
+<hr>
+        <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-5 bg-success-subtle-main-banner">
+                    <div class="col">
+                        <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-text">WHO IS BEHIND HAPPY TAILS?</h6>
+                                    <p class="card-text">
+                                        I am Vanessa Lamas, a Digital Project Manager and Full-Stack Ironhacker. I am passionate about using my abilities to help the community give their pets a better life.</p>
+                                    <p class="card-text">
+                                        I believe that every pet deserves a loving and caring home, and I am committed to helping pet owners find the resources they need to ensure their pets' health and happiness through this free application.</p>
+                                     <div class="d-flex justify-content-between align-items-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="card-text">WHAT IS HAPPY TAILS ABOUT?</h6>
+                                        <p class="card-text">
+                                           The ultimate solution for dog owners and dog lovers alike. With this user-friendly interface, we seamlessly connect individuals who own dogs with others who are willing to take them for walks. </p>
+                                           <p class="card-text">Our app offers convenience by effortlessly locating trustworthy dog walkers in your area. It fosters a vibrant community of dog enthusiasts, prioritizes safety through a thorough vetting process, and provides flexibility to accommodate various needs and schedules.</p>
+                                        <div class="d-flex justify-content-between align-items-center"></div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ else }}
+<div class="container-fullscreen d-flex justify-content-center align-items-center" style="background-image: url('/images/homepage-hero-logged-in.jpeg'); background-size: cover; background-position: center; height: 100vh;">
+    <div class="bg-success-subtle-main-banner-opacity container col-xl-6 col-xxl-6 px-3 py-4 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h1 class="display-4 fw-bold text-body-emphasis">Happy Tails</h1>
+            <p class="lead">
+                Discover the pets that are currently in need of a pet walker
+            </p>
+            <a href="/all-pets" class="btn btn-primary btn-lg px-4 me-sm-3">Discover all pets</a>
+        </div>
+    </div>
+</div>
+{{/unless}}

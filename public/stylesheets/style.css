@@ -3,10 +3,18 @@ body {
   font-family: 'Nunito Sans', sans-serif;
 }
 
-strong {
-  font-weight: 500;
-}
-
 .modal {
   height: 90% !important;
+}
+
+.bg-success-subtle-menu {
+  background-color: #d4d7d8;
+}
+
+.bg-success-subtle-main-banner {
+  background-color: #f4f7f8;
+}
+
+.bg-success-subtle-main-banner-opacity {
+  background-color: rgba(223, 230, 225, 0.5); 
 }

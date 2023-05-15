@@ -1,15 +1,26 @@
-<h1>Create pet</h1>
-<form action="/new-pet" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="owner" value="{{user._id}}">
-        <p>Name:
-            <input type="text" name="name" placeholder="Name"></p>
-            <p>Small description:
-                <input type="text" name="description" placeholder="Description"></p>
-                <p>More Details:
-                    <input type="text" name="longDescription" placeholder="More details"></p>
-                    <p>Image:
-                        <input type="file" name="imageUrl"></p>
-                        <p>
-                            <button type="submit">Add</button>
-                    </form>
-
+<div class="modal modal-sheet position-static d-block bg-body-secondary bg-success-subtle-main-banner" tabindex="-1" role="dialog" id="modalSignin">
+            <div class="modal-body mt-5 ms-5 me-5 ps-5 pe-5">
+                <form action="/new-pet" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="owner" value="{{user._id}}">
+                    <p>Pet name:</p>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="name" class="form-control rounded-3" placeholder="Name">
+                    </div>
+                    <p>Small description:</p>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="description" class="form-control rounded-3" id="floatingInput" placeholder="Description">
+                    </div>
+                    <p>More details about my pet:</p>
+                    <div class="form-floating mb-3">
+                        <textarea type="text" name="longDescription" class="form-control rounded-3" id="floatingInput" placeholder="Long Description"></textarea>
+                    </div>
+                    <p>Image:</p>
+                    <input type="file" name="imageUrl">
+                    <p>
+                        <button class="mt-5 w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Add my pet</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

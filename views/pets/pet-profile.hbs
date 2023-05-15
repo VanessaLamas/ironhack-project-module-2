@@ -31,7 +31,10 @@
 
 
 
-<pre>{{data}}</pre>
+{{#each data.comments}}
+    <pre>{{this.author.firstName}} {{this.author.lastName}}</pre>
+    {{this.content}}
+  {{/each}}
 
 {{!-- posts/details.hbs --}}
 <form action="/all-pets/{{data._id}}/comment" method="post">

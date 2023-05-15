@@ -42,15 +42,6 @@ router.post('/new-pet', fileUploader.single('imageUrl'), (request, response) => 
   });
 });
 
-// get the specific pet render page
-router.get('/all-pets/:petId', (request, response) => {
-  const { petId } = request.params;
-  Pet.findById(petId)
-    .then((data) => {
-      response.render('pets/pet-profile', { data });
-    });
-});
-
 // delete a pet
 router.post('/all-pets/:petId/delete', isLoggedIn, (req, res, next) => {
   const { petId } = req.params;
@@ -82,9 +73,16 @@ router.post('/all-pets/:petId/edit', (req, res, next) => {
 router.get('/all-pets/:petId', (req, res, next) => {
   const { petId } = req.params;
   Pet.findById(petId)
-    .populate('comments')
+    .populate('comments owner')
+    .populate({
+      path: 'comments',
+      populate: {
+        path: 'author',
+        model: 'User'
+      }
+    })
     .then((data) => {
-      res.render('pets/edit-profile', { data });
+      res.render('pets/pet-profile', { data });
     })
     .catch(error => next(error));
 });
