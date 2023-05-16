@@ -1,3 +1,63 @@
-<h1>Hello {{user.firstName}}, Welcome to Happy Tails!</h1>
-
-
+<body>
+    <section class="py-5 my-5">
+        <div class="container">
+            <h1 class="mb-5">Welcome
+                {{user.firstName}}!</h1>
+            <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <h3 class="mb-4">Personal Details</h3>
+                        <div class="row">
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <p>First Name</p>
+                                    <p>{{user.firstName}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <p>Last Name</p>
+                                    <p>{{user.lastName}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <p>Email</p>
+                                    <p>{{user.email}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <p>Phone number</p>
+                                    <p>{{user.phoneNumber}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white shadow mt-5 rounded-lg d-block d-sm-flex">
+                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <h3 class="mb-4">Add my pet</h3>
+                        <p class="mb-4">Don't miss the opportunity to showcase your own beloved pet for others to discover and take them on delightful walks! Click here to add your pet and let them find their perfect walking companion.</p>
+                    </div>
+                    <div class="row">
+                        <a href="/new-pet" class="btn btn-primary btn-lg px-4 me-sm-3">Add my pet</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="bg-white shadow mt-5 rounded-lg d-block d-sm-flex">
+                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <h3 class="mb-4">Search for pets</h3>
+                        <p class="mb-4">Discover adorable pets awaiting your company! Click the button below to explore a page brimming with furry friends eagerly seeking walking companions. Embark on an exciting journey together and make unforgettable memories!</p>
+                    </div>
+                    <div class="row">
+                        <a href="/all-pets" class="btn btn-primary btn-lg px-4 me-sm-3">Search for pets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

@@ -18,3 +18,11 @@ body {
 .bg-success-subtle-main-banner-opacity {
   background-color: rgba(223, 230, 225, 0.5); 
 }
+
+#login-form {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+     display: flex;
+  align-items: center;
+}
