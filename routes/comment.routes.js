@@ -22,6 +22,15 @@ router.post('/all-pets/:petId/comment', (req, res, next) => {
     });
 });
 
+// delete a comment
+router.post('/all-pets/:petId/comment/:commentId/delete', (req, res, next) => {
+  const { commentId, petId } = req.params;
+  console.log(req.params);
+  Comment.findByIdAndDelete(commentId)
+    .then(() => res.redirect(`/all-pets/${petId}`))
+    .catch(error => next(error));
+});
+
 module.exports = router;
 
 
