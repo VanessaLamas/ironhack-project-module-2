@@ -82,7 +82,8 @@ router.get('/all-pets/:petId', (req, res, next) => {
       }
     })
     .then((data) => {
-      res.render('pets/pet-profile', { data });
+ console.log(req.session.currentUser._id);
+      res.render('pets/pet-profile', { data:data, userId:req.session.currentUser._id });
     })
     .catch(error => next(error));
 });

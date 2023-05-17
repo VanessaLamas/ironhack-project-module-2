@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Pet = require("../models/Pet.model");
 const Comment = require("../models/Comment.model");
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 // create a comment and send it to the database
 router.post('/all-pets/:petId/comment', (req, res, next) => {
@@ -23,7 +24,7 @@ router.post('/all-pets/:petId/comment', (req, res, next) => {
 });
 
 // delete a comment
-router.post('/all-pets/:petId/comment/:commentId/delete', (req, res, next) => {
+router.post('/all-pets/:petId/comment/:commentId/delete', isLoggedIn, (req, res, next) => {
   const { commentId, petId } = req.params;
   console.log(req.params);
   Comment.findByIdAndDelete(commentId)

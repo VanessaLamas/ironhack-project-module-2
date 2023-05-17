@@ -13,6 +13,14 @@ const cookieParser = require("cookie-parser");
 // https://www.npmjs.com/package/serve-favicon
 const favicon = require("serve-favicon");
 
+const hbs = require("hbs");
+hbs.registerHelper('if_eq', function(a, b, opts) {
+  if(a == b) // Or === depending on your needs
+      return opts.fn(this);
+  else
+      return opts.inverse(this);
+});
+
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 const path = require("path");

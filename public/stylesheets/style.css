@@ -23,6 +23,10 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-     display: flex;
+  display: flex;
   align-items: center;
+}
+
+.nav-link:hover {
+  font-weight: bold;
 }

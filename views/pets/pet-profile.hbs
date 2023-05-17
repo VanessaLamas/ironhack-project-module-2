@@ -17,7 +17,7 @@
                         <p class="lead">{{ data.longDescription }}</p>
                         <div class="d-flex">
                             <form action="/all-pets/{{ data._id }}/delete" method="POST">
-                                <button class="btn btn-outline-dark flex-shrink-0 m-2">Delete</button>
+                                <button class="btn flex-shrink-0 btn-danger m-2">Delete</button>
                             </form>
                             <form action="/all-pets/{{ data._id }}/edit" method="GET">
                                 <button class="btn btn-outline-dark flex-shrink-0 m-2">Edit</button>
@@ -29,7 +29,7 @@
         </section>
         <hr>
             <section>
-                <h5 class="text-center">Comments</h5>
+                <h3 class="text-center">Comments</h3>
                 {{#each data.comments}}
                     <input type="text" name="author" value="{{ data._id }}" hidden="hidden"/>
                     <div class="container my-1 py-1 text-dark">
@@ -39,13 +39,49 @@
                                     <div class="card w-100">
                                         <div class="card-body p-4">
                                             <div class="">
-                                                <h5>{{ this.author.firstName }}
-                                                    {{ this.author.lastName }}</h5>
-                                                <p>{{ this.content }}</p>
-                                                <div class="d-flex justify-content-end">
-                                                    <form action="/all-pets/{{ ../data._id }}/comment/{{ this._id }}/delete" method="POST">
-                                                        <button class="btn flex-shrink-0 m-2 btn-danger">Delete</button>
-                                                    </form>
+                                                <h5>
+                                                    <strong>{{ this.author.firstName }}
+                                                        {{ this.author.lastName }}</strong>
+                                                </h5>
+                                                <p class="fs-5">{{ this.content }}</p>
+                                                <p class="fs-6 fw-lighter fst-italic text-muted">
+                                                    {{ this.createdAt }}
+                                                </p>
+                                                {{#if_eq this.author._id @root.userId }}
+                                                    <div class="d-flex justify-content-end">
+                                                        <form action="/all-pets/{{ ../data._id }}/comment/{{ this._id }}/delete" method="POST">
+                                                            <button class="btn flex-shrink-0 btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                {{/if_eq}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </section>
+            <hr>
+                <form action="/all-pets/{{ data._id }}/comment" method="post">
+                    <input type="text" name="author" value="{{ user._id }}" hidden="hidden"/>
+                    <div class="container my-1 py-1 text-dark">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-10 col-lg-8 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex flex-start w-100">
+                                            <div class="w-100">
+                                                <h5>Add a comment</h5>
+                                                <div class="form-outline">
+                                                    <textarea name="content" class="form-control" id="textAreaExample" rows="2"></textarea>
+                                                </div>
+                                                <div class="d-flex justify-content-between mt-3">
+                                                    <button type="submit" class="btn btn-success">
+                                                        Add comment
+                                                        <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -53,33 +89,5 @@
                                 </div>
                             </div>
                         </div>
-                    {{/each}}
-                </section>
-                <hr>
-                    <form action="/all-pets/{{ data._id }}/comment" method="post">
-                        <input type="text" name="author" value="{{ user._id }}" hidden="hidden"/>
-                        <div class="container my-1 py-1 text-dark">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-md-10 col-lg-8 col-xl-6">
-                                    <div class="card">
-                                        <div class="card-body p-4">
-                                            <div class="d-flex flex-start w-100">
-                                                <div class="w-100">
-                                                    <h5>Add a comment</h5>
-                                                    <div class="form-outline">
-                                                        <textarea name="content" class="form-control" id="textAreaExample" rows="2"></textarea>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between mt-3">
-                                                        <button type="submit" class="btn btn-success">
-                                                            Add comment
-                                                            <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+                </form>
