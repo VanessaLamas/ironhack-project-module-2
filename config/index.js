@@ -13,12 +13,13 @@ const cookieParser = require("cookie-parser");
 // https://www.npmjs.com/package/serve-favicon
 const favicon = require("serve-favicon");
 
+// to compare in a hbs a and b
 const hbs = require("hbs");
-hbs.registerHelper('if_eq', function(a, b, opts) {
-  if(a == b) // Or === depending on your needs
-      return opts.fn(this);
+hbs.registerHelper('if_eq', function (a, b, opts) {
+  if (a == b) // Or === depending on your needs
+    return opts.fn(this);
   else
-      return opts.inverse(this);
+    return opts.inverse(this);
 });
 
 // ℹ️ global package used to `normalize` paths amongst different operating systems
@@ -33,9 +34,10 @@ const session = require("express-session");
 // https://www.npmjs.com/package/connect-mongo
 const MongoStore = require("connect-mongo");
 
+require('dotenv').config();
+
 // Connects the mongo uri to maintain the same naming structure
-const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project-module-2";
+const MONGO_URI = process.env.MONGODB_URI;
 
 // Middleware configuration
 module.exports = (app) => {
