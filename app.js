@@ -21,7 +21,7 @@ const capitalize = require("./utils/capitalize");
 const projectName = "project-module-2";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
-
+ 
 
 // Set a user variable on res.locals
 app.use(function(req, res, next) {
