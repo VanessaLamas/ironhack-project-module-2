@@ -15,14 +15,16 @@
                         <p></div>
                         <p class="lead">{{ data.description }}</p>
                         <p class="lead">{{ data.longDescription }}</p>
-                        <div class="d-flex">
-                            <form action="/all-pets/{{ data._id }}/delete" method="POST">
-                                <button class="btn flex-shrink-0 btn-danger m-2">Delete</button>
-                            </form>
-                            <form action="/all-pets/{{ data._id }}/edit" method="GET">
-                                <button class="btn btn-outline-dark flex-shrink-0 m-2">Edit</button>
-                            </form>
-                        </div>
+                        {{#if_eq data.owner._id @root.userId }}
+                            <div class="d-flex">
+                                <form action="/all-pets/{{ data._id }}/delete" method="POST">
+                                    <button class="btn flex-shrink-0 btn-danger m-2">Delete</button>
+                                </form>
+                                <form action="/all-pets/{{ data._id }}/edit" method="GET">
+                                    <button class="btn btn-outline-dark flex-shrink-0 m-2">Edit</button>
+                                </form>
+                            </div>
+                        {{/if_eq}}
                     </div>
                 </div>
             </div>
