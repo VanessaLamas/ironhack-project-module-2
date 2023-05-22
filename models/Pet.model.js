@@ -2,10 +2,19 @@ const { Schema, model } = require("mongoose");
 const mongoose = require('mongoose');
 const petSchema = new Schema(
   {
-    name: String,
-    description: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
     longDescription: String,
-    imageUrl: String,
+    imageUrl: {
+      type: String,
+      required: true,
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',
